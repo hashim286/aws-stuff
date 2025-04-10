@@ -17,6 +17,7 @@ resource "aws_subnet" "seefood-db" {
   }
 }
 
+# subnet groups require at least 3 subnets in different AZs for the multi-az deployment regardless of if you actually use it so I had to define some extras here as just "backup" even though I only planned to use 1
 resource "aws_subnet" "backup" {
   vpc_id            = aws_vpc.seefood.id
   cidr_block        = "10.39.16.0/20"
