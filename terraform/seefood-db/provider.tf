@@ -1,11 +1,11 @@
 terraform {
   # added backend S3 to keep centralized state file
   backend "s3" {
-    bucket                   = "terraform-state-bucket-hr"
-    key                      = "terraform.tfstate"
-    region                   = "us-east-1"
-    shared_credentials_files = ["~/.aws/credentials"]
-    profile                  = "iamadmin-general"
+    bucket                   = "BUCKET_NAME"
+    key                      = "KEY"
+    region                   = "DEFAULT_REGION"
+    shared_credentials_files = ["CREDENTIALS_PATH"]
+    profile = "IF_APPLICABLE"
   }
   required_providers {
     aws = {
@@ -16,7 +16,6 @@ terraform {
 }
 
 provider "aws" {
-  region                   = "us-east-1"
-  shared_credentials_files = ["~/.aws/credentials"]
-  profile                  = "iamadmin-general"
+  region                   = "DEFAULT_REGION"
+  shared_credentials_files = ["CREDENTIALS_PATH"]
 }
