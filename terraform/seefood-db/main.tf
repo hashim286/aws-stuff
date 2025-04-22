@@ -12,6 +12,8 @@ module "rds" {
   subnet_ids   = module.vpc.subnet_ids
   az           = module.vpc.az
   sec_group_id = module.security_groups.sec_group_id
+  master_password = 
+  master_username = 
 }
 
 module "igw" {
@@ -25,3 +27,12 @@ module "routing" {
   igw_id    = module.igw.igw_id
   subnet_id = module.vpc.subnet_id
 }
+
+#module "api_gw" {
+#  source = "./modules/api_gw"
+#}
+#
+#module "lambda" {
+#  source = "./modules/lambda"
+#}
+#
