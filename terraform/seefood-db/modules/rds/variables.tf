@@ -12,3 +12,13 @@ variable "sec_group_id" {
   description = "security group for db"
   type        = string
 }
+
+variable "master_password" {
+  description = "master password for the db"
+  type = string
+}
+
+variable "master_username" {
+  description = "master username for the db"
+  type = string
+}
