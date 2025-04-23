@@ -1,6 +1,7 @@
 module "vpc" {
-  source = "./modules/vpc/"
+  source         = "./modules/vpc/"
   vpc_cidr_block = var.vpc_cidr_block
+  default_region = var.default_region
 }
 
 module "security_groups" {
@@ -29,11 +30,11 @@ module "routing" {
   subnet_id = module.vpc.subnet_id
 }
 
-#module "api_gw" {
-#  source = "./modules/api_gw"
-#}
-#
-#module "lambda" {
-#  source = "./modules/lambda"
-#}
-#
+module "api_gw" {
+  source = "./modules/api_gw"
+}
+
+module "lambda" {
+  source = "./modules/lambda"
+}
+
