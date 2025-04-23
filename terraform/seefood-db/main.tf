@@ -1,5 +1,6 @@
 module "vpc" {
   source = "./modules/vpc/"
+  vpc_cidr_block = var.vpc_cidr_block
 }
 
 module "security_groups" {
@@ -8,12 +9,12 @@ module "security_groups" {
 }
 
 module "rds" {
-  source       = "./modules/rds/"
-  subnet_ids   = module.vpc.subnet_ids
-  az           = module.vpc.az
-  sec_group_id = module.security_groups.sec_group_id
-  master_password = 
-  master_username = 
+  source          = "./modules/rds/"
+  subnet_ids      = module.vpc.subnet_ids
+  az              = module.vpc.az
+  sec_group_id    = module.security_groups.sec_group_id
+  master_password = var.master_password
+  master_username = var.master_username
 }
 
 module "igw" {

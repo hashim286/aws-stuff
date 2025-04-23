@@ -10,8 +10,8 @@ resource "aws_db_instance" "seefood-db" {
   engine                 = "mysql"
   engine_version         = "8.0"
   instance_class         = "db.t3.micro"
-  username               = "username"
-  password               = "test"
+  username               = var.master_username
+  password               = var.master_password
   db_subnet_group_name   = aws_db_subnet_group.seefood.name
   multi_az               = false
   availability_zone      = var.az

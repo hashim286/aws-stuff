@@ -15,10 +15,10 @@ variable "sec_group_id" {
 
 variable "master_password" {
   description = "master password for the db"
-  type = string
+  type        = string
 }
 
 variable "master_username" {
   description = "master username for the db"
-  type = string
+  type        = string
 }

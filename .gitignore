@@ -2,3 +2,4 @@
 *.terraform*
 *.terraform/*
 *dependencies*
+backend.conf
