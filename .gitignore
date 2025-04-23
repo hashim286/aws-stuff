@@ -3,3 +3,4 @@
 *.terraform/*
 *dependencies*
 backend.conf
+*.json
