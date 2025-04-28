@@ -34,5 +34,5 @@ resource "aws_lambda_permission" "apigw_lambda" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.seefood-query
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "arn:aws:execute-api:${var.myregion}:${var.accountId}:${aws_api_gateway_rest_api.seefood_api.id}/*/${aws_api_gateway_method.get_all.http_method}${aws_api_gateway_resource.get_db_info.path}"
+  source_arn    = "arn:aws:execute-api:${var.default_region}:${var.accountId}:${aws_api_gateway_rest_api.seefood_api.id}/*/${aws_api_gateway_method.get_all.http_method}${aws_api_gateway_resource.get_db_info.path}"
 }
