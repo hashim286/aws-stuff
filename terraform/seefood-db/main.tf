@@ -32,9 +32,12 @@ module "routing" {
 
 module "api_gw" {
   source = "./modules/api_gw"
+  lambda_function_arn = module.lambda.lambda_function_arn
 }
 
 module "lambda" {
   source = "./modules/lambda"
+  default_region = var.default_region
+  accountId = var.accountId
 }
 
