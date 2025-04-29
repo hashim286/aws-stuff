@@ -6,7 +6,7 @@ resource "aws_api_gateway_rest_api" "seefood_api" {
 resource "aws_api_gateway_resource" "get_db_info" {
   rest_api_id = aws_api_gateway_rest_api.seefood_api.id
   parent_id   = aws_api_gateway_rest_api.seefood_api.root_resource_id
-  path_part  = "query"
+  path_part   = "query"
 }
 
 resource "aws_api_gateway_method" "get_all" {
@@ -24,5 +24,15 @@ resource "aws_api_gateway_integration" "call_lambda_seefood" {
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = var.lambda_function_arn
+}
+
+resource "aws_api_gateway_deployment" "deploy_get" {
+  rest_api_id = aws_api_gateway_rest_api.seefood_api.id
+}
+
+resource "aws_api_gateway_stage" "main" {
+  rest_api_id   = aws_api_gateway_rest_api.seefood_api.id
+  deployment_id = aws_api_gateway_deployment.deploy_get.id
+  stage_name    = "main"
 }
 
