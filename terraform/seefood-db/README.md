@@ -1,0 +1,3 @@
+# Purpose
+
+A class project required us to develop an application and our group chose to develop an application which detected allergies that users scanned from barcodes and warned them if that food contained allergens. In order to serve this function, we needed a database that maintained products and ingredients associated and a place to host that database. In order to serve the database, I opted to host it in AWS and utilized these terraform modules to spin up the database and all associated infrastructure that it would require. It was also a great learning opportunity as I was pursuing the AWS SAA-C03 certification to get hands on experience with concepts I was learning about
