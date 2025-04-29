@@ -18,6 +18,10 @@ variable "vpc_cidr_block" {
   type = string
 }
 
-variable "accountId" {
+variable "profile" {
+  type = string
+}
+
+variable "dependencies_file" {
   type = string
 }
