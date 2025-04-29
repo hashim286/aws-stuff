@@ -1,3 +1,5 @@
+data "aws_caller_identity" "acct" {}
+
 module "vpc" {
   source         = "./modules/vpc/"
   vpc_cidr_block = var.vpc_cidr_block
@@ -31,13 +33,19 @@ module "routing" {
 }
 
 module "api_gw" {
-  source = "./modules/api_gw"
+  source              = "./modules/api_gw"
   lambda_function_arn = module.lambda.lambda_function_arn
 }
 
 module "lambda" {
-  source = "./modules/lambda"
-  default_region = var.default_region
-  accountId = var.accountId
+  source            = "./modules/lambda"
+  default_region    = var.default_region
+  accountId         = data.aws_caller_identity.acct.account_id
+  gw_resource       = module.api_gw.gw_resource
+  gw_api            = module.api_gw.gw_api
+  gw_method         = module.api_gw.gw_method
+  dependencies_file = var.dependencies_file
+  execution_arn     = module.api_gw.execution_arn
 }
+
 
